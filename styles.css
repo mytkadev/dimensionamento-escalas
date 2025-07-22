@@ -121,21 +121,24 @@ p {
     flex-direction: column;
     gap:16px;
 }
-
 #infoSetor {
   margin: 18px 0;
   font-size: 14px;
-  min-height: 50px; /* Ou o valor que encaixar melhor ao seu layout */
+  min-height: 40px; /* Ajuste esse valor até ficar visualmente confortável para todos os casos */
   transition: min-height 0.2s;
+  /* Se quiser garantir que a linha esteja sempre presente, pode adicionar: */
+  display: block;
 }
 .select-container_first {
   display: flex;
   gap: 16px;
 }
-
 .select-container_firstdiv {
   width: 50%;
   transition: width 0.2s;
+  min-height: 68px; /* ou ajuste para caber label+select */
+  box-sizing: border-box;
+  display: block;
 }
 
 .select-container_firstdiv:only-child {
