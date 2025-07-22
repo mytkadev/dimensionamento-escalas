@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Dimensionamento</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="title-subtitle">
+        <h2 class="title">Padronização Dimensionamento <br>por Especialidade e Sítio Funcional</h2>
+        <p class="subtitle">Calculadora para dimensionamento de equipes conforme legislação vigente e necessidades setoriais</p>
+    </div>
+    <div class="container">
+        <div class="all-container">
+            <div class="select-container">    
+                <div class="select-container_divs">
+                    <div class="select-container_first">
+                        <div class="select-container_firstdiv">
+                            <label for="equipe">Selecione a equipe:</label>
+                            <select id="equipe"></select>
+                        </div>    
+                        <div class="select-container_firstdiv">        
+                            <label for="setor">Selecione o setor:</label>
+                            <select id="setor"></select>
+                        </div>
+                    </div>
+                    <div class="select-container_firstdiv" id="profissional-container" style="display:none">
+                        <label for="profissional">Selecione o profissional:</label>
+                        <select id="profissional"></select>
+                    </div>
+                    <div class="select-container_firstdiv" id="complexidade-container" style="display:none">
+                        <label for="complexidade">Selecione a complexidade:</label>
+                        <select id="complexidade"></select>
+                    </div>
+                                        
+                    <div id="infoSetor" style="margin:12px 0"></div>
+                    <div class="select-container_second">
+                        <div class="leitos">
+                            <label for="leitos">Quantidade de leitos:</label>
+                            <input type="number" id="leitos" min="1" placeholder="0">
+                        </div>
+                        <div>
+                            <label for="atuais">Funcionários atualmente no setor:</label>
+                            <div class="qtt-inputs">
+                                <div>
+                                <p style="margin-top:4px;  font-size:0.8em;">Parceiros:</p>
+                                <input type="number" id="atuais-parceiro" min="0" placeholder="0">
+                                </div>
+                                <div>
+                                <p style="margin-top:4px; font-size:0.8em;">Servidores:</p>
+                                <input type="number" id="atuais-servidor" min="0" placeholder="0">
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+                <button onclick="calcular()">Calcular</button>
+            </div>    
+
+            <div class="resultado" id="resultado" style="display:none"></div>
+        </div>
+        
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

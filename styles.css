@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+html, body {
+  height: 100%;
+  min-height: 100vh;
+}
+body {
+  font-family: "Inter", sans-serif;
+  background: #D5E2E5;
+  color:#1e1e1e;
+  margin: 0;
+}
+.container {
+    width: 50%;
+    margin:40px auto;
+  padding: 24px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px #0001;
+}
+.title-subtitle{
+    text-align: center;
+}
+.title {
+  margin-top: 64px;
+  margin-bottom: 16px;
+  color: #0f0f0f;
+  font-weight: 600;
+  letter-spacing: .5px;
+}
+.subtitle{
+    font-size: 16px;
+    font-weight: 300;
+}
+label {
+    font-size:14px;
+    margin-bottom:2px;
+  display: block;
+  color: #444;
+}
+select {
+  width: 100%;
+  padding: 8px 12px 8px 8px ;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+input{
+    width:60px;
+  padding: 8px 12px 8px 8px ;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  font-size: 0.9em;
+
+}
+button {
+  margin-top: 24px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 7px;
+  background: #2FB1AB;
+  color: #fff;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.2s;
+}
+button:hover {
+  background: #289;
+}
+.resultado {
+    margin-left:24px;
+  background: #e0f7fa;
+  border-radius: 8px;
+  padding: 18px;
+  font-size: 1.15em;
+  border: 1px solid #b2ebf2;
+}
+@media (max-width: 600px) {
+  .container {
+    padding: 18px 5vw;
+  }
+  h2 { font-size: 1.1em; }
+}
+.select-container_first{
+    display:flex;
+    gap:16px;
+
+}
+.select-container_firstdiv{
+    width:50%
+}
+
+.select-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width:60%;
+
+}
+.all-container{
+    display:flex;
+    height:100%
+}
+
+.qtt-inputs{
+    display:flex;
+    gap:20px
+}
+p {
+  margin: 0;
+}
+.leitos{
+    display:flex;
+    flex-direction: column;
+    height:100%;
+    justify-content: space-between;
+}
+.select-container_second{
+    display:flex;
+    flex-direction: column;
+    gap:16px;
+}
+
+#infoSetor {
+  margin: 18px 0;
+  font-size: 14px;
+  min-height: 50px; /* Ou o valor que encaixar melhor ao seu layout */
+  transition: min-height 0.2s;
+}
+.select-container_first {
+  display: flex;
+  gap: 16px;
+}
+
+.select-container_firstdiv {
+  width: 50%;
+  transition: width 0.2s;
+}
+
+.select-container_firstdiv:only-child {
+  width: 100%;
+}
