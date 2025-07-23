@@ -2,8 +2,9 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Calculadora de Dimensionamento</title>
+  <title>Dimensionamento</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="./icon.png" type="image/png">
 </head>
 <body>
     <div class="title-subtitle">
@@ -12,9 +13,14 @@
     </div>
     <div class="container">
         <div class="navbar">
+            <div >
+                <button id="restart-button"><img src="./button.png" style="height:24px" alt=""></button>
+            </div>
+            <div class="navbar-content">
             <button id="abaEquipeMulti" class="active">Equipe Multi</button>
             <button id="abaEnfermagem">Enfermagem</button>
             <button id="abaLegislacao">Legislação</button>
+            </div>
         </div>
         <div id="abaConteudoEquipeMulti" class="all-container" style="display:block;">
             <div class="select-container">    
@@ -24,7 +30,7 @@
                             <label for="equipe" class="label-equipe">Selecione a equipe:</label>
                             <select id="equipe"></select>
                         </div>    
-                        <div class="select-container_firstdiv">        
+                        <div class="select-container_firstdivv">        
                             <label for="setor">Selecione o setor:</label>
                             <select id="setor"></select>
                         </div>
