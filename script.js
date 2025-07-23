@@ -642,24 +642,20 @@ window.onload = function () {
     document.getElementById('complexidade-container').style.visibility = 'hidden';
     ajustarLarguraSelects();
     mostrarInfoSetor();
-    calcular();
   });
 
   document.getElementById('setor').addEventListener('change', function () {
     popularDropdownProfissional();
     mostrarInfoSetor();
-    calcular();
   });
 
   document.getElementById('profissional').addEventListener('change', function () {
     popularDropdownComplexidade();
     mostrarInfoSetor();
-    calcular();
   });
 
   document.getElementById('complexidade').addEventListener('change', function () {
     mostrarInfoSetor();
-    calcular();
   });
 
   // Atualiza ao digitar nos campos de número
