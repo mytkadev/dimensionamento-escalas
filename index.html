@@ -11,12 +11,17 @@
         <p class="subtitle">Calculadora para dimensionamento de equipes conforme legislação vigente e necessidades setoriais</p>
     </div>
     <div class="container">
-        <div class="all-container">
+        <div class="navbar">
+            <button id="abaEquipeMulti" class="active">Equipe Multi</button>
+            <button id="abaEnfermagem">Enfermagem</button>
+            <button id="abaLegislacao">Legislação</button>
+        </div>
+        <div id="abaConteudoEquipeMulti" class="all-container" style="display:block;">
             <div class="select-container">    
                 <div class="select-container_divs">
                     <div class="select-container_first">
                         <div class="select-container_firstdiv">
-                            <label for="equipe">Selecione a equipe:</label>
+                            <label for="equipe" class="label-equipe">Selecione a equipe:</label>
                             <select id="equipe"></select>
                         </div>    
                         <div class="select-container_firstdiv">        
@@ -60,7 +65,15 @@
                 <button onclick="calcular()">Calcular</button>
             </div>    
 
-            <div class="resultado" id="resultado" style="display:none"></div>
+            <div class="resultado" id="resultado"></div>
+        </div>
+        <!-- Conteúdo da aba Enfermagem -->
+        <div id="abaConteudoEnfermagem" class="all-container" style="display:none;">
+        <!-- Futuro conteúdo da aba Enfermagem -->
+        </div>
+        <!-- Conteúdo da aba Legislação -->
+        <div id="abaConteudoLegislacao" class="all-container" style="display:none;">
+        <!-- Futuro conteúdo da aba Legislação -->
         </div>
         
     </div>
