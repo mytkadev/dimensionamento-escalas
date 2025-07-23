@@ -271,12 +271,12 @@ p {
 
 .navbar-content button {
   background: transparent;
-  color: #1e1e1e;
+  color: #363636;
   padding: 12px 12px 9px 12px;
   margin: 0;
   border-radius: 0;
   font-family: "Inter";
-  font-weight: 600;
+  font-weight: 500;
   width: fit-content;
   border-bottom: 3px solid #2fb1aa00;
   box-sizing: border-box;
@@ -293,8 +293,7 @@ p {
 
 .navbar-content button.active {
   border-bottom: 3px solid #2FB1AB;
-  background: #e5f9f8;
-  color: #109b8a;
+
 }
 
 #restart-button{
