@@ -664,6 +664,8 @@ function mostrarInfoSetor() {
 // =======================
 window.onload = function () {
   popularDropdownEquipe();
+  document.getElementById('restart-button').addEventListener('click', resetarSelecoes);
+
 
   document.getElementById('equipe').addEventListener('change', function () {
     popularDropdownSetor();
@@ -703,6 +705,7 @@ window.onload = function () {
     document.getElementById('abaConteudoEquipeMulti').style.display = 'none';
     document.getElementById('abaConteudoEnfermagem').style.display = 'none';
     document.getElementById('abaConteudoLegislacao').style.display = 'none';
+    
     // Remove classe active
     document.getElementById('abaEquipeMulti').classList.remove('active');
     document.getElementById('abaEnfermagem').classList.remove('active');
@@ -727,3 +730,31 @@ window.onload = function () {
   // Deixe a aba Equipe Multi como padrão no carregamento
   alternarAba('multi');
 };
+function resetarSelecoes() {
+  // Reseta todos os selects para o valor inicial
+  document.getElementById('equipe').value = '';
+  popularDropdownSetor();
+  document.getElementById('setor').value = '';
+  popularDropdownProfissional();
+  document.getElementById('profissional').value = '';
+  popularDropdownComplexidade();
+  document.getElementById('complexidade').value = '';
+
+  // Reseta os campos numéricos
+  document.getElementById('leitos').value = '';
+  document.getElementById('atuais-parceiro').value = '';
+  document.getElementById('atuais-servidor').value = '';
+
+  // Esconde campos que dependem das seleções
+  document.getElementById('profissional-container').style.visibility = 'hidden';
+  document.getElementById('complexidade-container').style.visibility = 'hidden';
+
+  // Limpa o infoSetor
+  document.getElementById('infoSetor').innerHTML = "";
+
+  // Limpa o resultado
+  document.getElementById('resultado').innerHTML = "";
+
+  // Traz para o estado inicial (opcional)
+  calcular();
+}
