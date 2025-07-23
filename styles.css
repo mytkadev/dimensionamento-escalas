@@ -206,6 +206,13 @@ button:hover {
   box-sizing: border-box;
   display: block;
 }
+.select-container_firstdivv {
+  width: 60%;
+  transition: width 0.2s;
+  min-height: 68px;
+  box-sizing: border-box;
+  display: block;
+}
 
 .select-container_seconddiv {
   width: 60%;
@@ -257,12 +264,12 @@ p {
 
 .navbar {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   border-bottom: 1px solid #1e1e1e28;
   box-sizing: border-box;
 }
 
-.navbar button {
+.navbar-content button {
   background: transparent;
   color: #1e1e1e;
   padding: 12px 12px 9px 12px;
@@ -276,16 +283,26 @@ p {
   transition: border-bottom 0.2s;
 }
 
-.navbar button:hover {
+.navbar-content button:hover {
   border-bottom: 3px solid #e4e4e4;
 }
 
-.navbar button:focus {
+.navbar-content button:focus {
   border-bottom: 3px solid #2FB1AB;
 }
 
-.navbar button.active {
+.navbar-content button.active {
   border-bottom: 3px solid #2FB1AB;
   background: #e5f9f8;
   color: #109b8a;
+}
+
+#restart-button{
+  padding:10px;
+  text-align: center;
+  margin: 0;
+  background-color:transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
