@@ -9,13 +9,13 @@ const equipes = [
       {
         nome: "Internação",
         desc: "1 a cada 40 leitos",
-        fonte: "Resolução CFESS 383/1999",
+        fonte: "Resolução CFESS 383/1999 | SES/DF 2015",
         regra: (leitos) => Math.ceil(leitos / 40)
       },
       {
         nome: "UTI (adulto, infantil e neonatologia)",
         desc: "1 por equipe (pedido de interconsulta)",
-        fonte: "Resolução CFESS 383/1999",
+        fonte: "Resolução CFESS 383/1999 | SES/DF 2015",
         regra: () => 1
       }
     ]
@@ -32,13 +32,13 @@ const equipes = [
               {
                 nome: "Alta Complexidade",
                 desc: "1 para cada 30 leitos",
-                fonte: "Resolução CFN nº 600/2018",
+                fonte: "Portaria CRN-3 nº 340/2018",
                 regra: (leitos) => Math.ceil(leitos / 30)
               },
               {
                 nome: "Média Complexidade",
                 desc: "1 para até 60 leitos",
-                fonte: "Resolução CFN nº 600/2018",
+                fonte: "Portaria CRN-3 nº 340/2018",
                 regra: (leitos) => Math.ceil(leitos / 60)
               }
             ]
@@ -49,13 +49,13 @@ const equipes = [
               {
                 nome: "Alta Complexidade",
                 desc: "1 para cada 90 leitos",
-                fonte: "Resolução CFN nº 600/2018",
+                fonte: "Portaria CRN-3 nº 340/2018",
                 regra: (leitos) => Math.ceil(leitos / 90)
               },
               {
                 nome: "Média Complexidade",
                 desc: "1 para cada 180 leitos",
-                fonte: "Resolução CFN nº 600/2018",
+                fonte: "Portaria CRN-3 nº 340/2018",
                 regra: (leitos) => Math.ceil(leitos / 180)
               }
             ]
@@ -93,20 +93,20 @@ const equipes = [
               {
                 nome: "Dose unitária",
                 desc: "1 para cada 25 leitos",
-                fonte: "Manual de Parâmetros para dimensionamento de força de trabalho",
+                fonte: "SES/DF 2015",
                 regra: (leitos) => Math.ceil(leitos / 25)
               },
               {
                 nome: "Dose convencional",
                 desc: "1 para cada 30 leitos",
-                fonte: "Manual de Parâmetros para dimensionamento de força de trabalho",
+                fonte: "SES/DF 2015",
                 regra: (leitos) => Math.ceil(leitos / 30)
               },
               {
                 nome: "Controle/Atendimento/Distribuição",
                 desc: "2 para controle, 2 para atendimento, 1 para distribuição",
-                fonte: "Manual de Parâmetros para dimensionamento de força de trabalho",
-                regra: () => "Ver regra manual"
+                fonte: "SES/DF 2015",
+                regra: () => 5
               }
             ]
           }
@@ -119,52 +119,27 @@ const equipes = [
     setores: [
       {
         nome: "Internação",
-        desc: "1 para cada 15 leitos",
-        fonte: "Resolução CFP nº 625/2020",
-        regra: (leitos) => Math.ceil(leitos / 15)
+        desc: "1 para cada 15 leitos (somente setores com demanda de Psicologia 25%)",
+        fonte: "Nota técnica CRP-09 003/2019",
+        regra: (leitos) => Math.ceil((leitos/0.25) / 15)
       },
-      {
-        nome: "Demanda Parcial",
-        desc: "Considerar apenas os setores com demanda de Psicologia ≥25%",
-        fonte: "Resolução CFP nº 625/2020",
-        regra: () => "Setor sob demanda"
-      }
+
     ]
   },
-  {
+ {
     nome: "Fisioterapia",
     setores: [
       {
         nome: "Internação",
-        profissionais: [
-          {
-            nome: "Fisioterapeuta",
-            complexidades: [
-              {
-                nome: "Regra padrão",
-                desc: "1 para cada 15 leitos",
-                fonte: "Resolução COFFITO nº 444/2014",
-                regra: (leitos) => Math.ceil(leitos / 15)
-              }
-            ]
-          }
-        ]
+        desc: "1 para cada 15 leitos",
+        fonte: "Resolução COFFITO nº 444/2014",
+        regra: (leitos) => Math.ceil(leitos / 15)
       },
       {
         nome: "UTI",
-        profissionais: [
-          {
-            nome: "Fisioterapeuta",
-            complexidades: [
-              {
-                nome: "Por período",
-                desc: "1 para cada 10 leitos por período de 6 horas",
-                fonte: "RDC 7 de 2010 ANVISA",
-                regra: () => "Ver RDC 7 para detalhamento"
-              }
-            ]
-          }
-        ]
+        desc: "1 para cada 10 leitos por período de 6 horas",
+        fonte: "RDC 7 de 2010 ANVISA",
+        regra: (leitos) => Math.ceil(leitos / 10)
       }
     ]
   },
@@ -174,7 +149,7 @@ const equipes = [
       {
         nome: "Internação",
         desc: "1 para cada 15 leitos (considere apenas setores com demanda ≥25%)",
-        fonte: "CREFITO e ABRATO",
+        fonte: "Resolução COFFITO n°. 418, junho/ 2012",
         regra: (leitos) => Math.ceil((leitos/0.25) / 15)
       }
     ]
@@ -190,22 +165,16 @@ const equipes = [
             complexidades: [
               {
                 nome: "Consultas hospitalares",
-                desc: "Até 8 avaliações por período de trabalho",
+                desc: "Até 8 avaliações por período de trabalho (Considerar apenas setores com demanda de Fono ≥25%)",
                 fonte: "Resolução CFFa nº 444/2014",
                 regra: () => "Máximo 8 avaliações por período"
               },
               {
                 nome: "Terapia ou sessão",
-                desc: "Até 7 pacientes por período de trabalho",
+                desc: "Até 7 pacientes por período de trabalho (Considerar apenas setores com demanda de Fono ≥25%)",
                 fonte: "Resolução CFFa nº 444/2014",
                 regra: () => "Máximo 7 pacientes por período"
               },
-              {
-                nome: "Demanda mínima",
-                desc: "Considerar apenas setores com demanda de Fono ≥25%",
-                fonte: "Resolução CFFa nº 444/2014",
-                regra: () => "Setor sob demanda"
-              }
             ]
           }
         ]
