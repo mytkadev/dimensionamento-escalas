@@ -626,7 +626,146 @@ function mostrarInfoSetor() {
 // =======================
 // CÁLCULO E EXIBIÇÃO DO RESULTADO NO CARD COM SVG
 // =======================
+function calcularEnfermagem() {
+  // Pega os valores
+  const setor = document.getElementById('enf-setor').value;
+  const prof = document.getElementById('enf-profissional').value;
+  const leitos = parseInt(document.getElementById('enf-leitos').value || '0');
+  const atuaisParceiro = parseInt(document.getElementById('enf-atuais-parceiro').value || '0');
+  const atuaisServidor = parseInt(document.getElementById('enf-atuais-servidor').value || '0');
+  const atuais = atuaisParceiro + atuaisServidor;
 
+  let necessario = 0;
+  let legenda = "";
+  let texto = `para ${leitos} leitos`;
+
+  // Validação básica
+  if (!setor || !prof || !leitos || leitos <= 0) {
+    atualizarResultadoEnfermagem({
+      svg: gerarDoughnut(1, { color: "#2FB1AB33" }),
+      numero: 0,
+      texto: "",
+      legenda: "Faça as seleções para calcular",
+      numeroCor: "#18a8a2"
+    });
+    return;
+  }
+
+  // Cálculo segundo o profissional
+  if (prof === "enfermeiro") {
+    necessario = Math.ceil(leitos / 8);
+    legenda = `<span>Regra:</span> 1 enfermeiro para cada 8 leitos <br><b>Fonte:</b> RDC 7/2010`;
+  } else if (prof === "tecnico") {
+    necessario = Math.ceil(leitos / 2);
+    legenda = `<span>Regra:</span> 1 técnico para cada 2 leitos <br><b>Fonte:</b> RDC 7/2010`;
+  }
+
+  // Não informou funcionários atuais
+  if (necessario > 0 && !atuais) {
+    atualizarResultadoEnfermagem({
+      svg: gerarDoughnut(1, { color: "#2fb1aaa2" }),
+      numero: necessario,
+      texto: texto,
+      legenda: legenda,
+      numeroCor: "#18a8a2"
+    });
+    return;
+  }
+
+  // Tem mais funcionários do que precisa
+  if (atuais > necessario) {
+    let percentVerde = necessario / atuais;
+    let percentVermelho = (atuais - necessario) / atuais;
+    atualizarResultadoEnfermagem({
+      svg: gerarDoughnut(percentVerde, {
+        color: "#2db46a",
+        extra: percentVermelho,
+        extraColor: "#de5454"
+      }),
+      numero: `-${atuais - necessario}`,
+      texto: texto,
+      ok: (atuais - necessario === 1
+        ? `Profissional acima do recomendado.</br></br>1 deve ser realocado ou dispensado.`
+        : `Profissionais acima do recomendado.</br></br>${atuais - necessario} devem ser realocados ou dispensados.`)
+        + `</br></br><b>Recomendado para ${leitos} leitos:</b> ${necessario}`,
+      numeroCor: "#de5454"
+    });
+    return;
+  }
+
+  // Tem menos do que precisa
+  if (atuais < necessario) {
+    let percentVerde = atuais / necessario;
+    let percentAmarelo = (necessario - atuais) / necessario;
+    atualizarResultadoEnfermagem({
+      svg: gerarDoughnut(percentVerde, {
+        color: "#2db46a",
+        missing: percentAmarelo,
+        missingColor: "#f7b92b"
+      }),
+      numero: `+${necessario - atuais}`,
+      texto: texto,
+      alerta: `Faltam ${necessario - atuais} profissional(is).`,
+      numeroCor: "#f7b92b"
+    });
+    return;
+  }
+
+  // Está certinho!
+  if (atuais === necessario) {
+    atualizarResultadoEnfermagem({
+      svg: gerarDoughnut(1, { color: "#2db46a" }),
+      numero: `0`,
+      texto: texto,
+      ok: "Equipe adequada com base na legislação.",
+      numeroCor: "#18a8a2"
+    });
+    return;
+  }
+}
+
+// UI da Enfermagem (igual a principal, mas para o outro container)
+function atualizarResultadoEnfermagem(params) {
+  let svg = params.svg || "";
+  let corNumero = params.numeroCor || "#18a8a2";
+  let html = `
+    <div class="resultado-circulo-container">
+      ${svg}
+      <div class="resultado-circulo-centro">
+        <div class="resultado-numero" style="color:${corNumero}">${params.numero}</div>
+        <div class="resultado-texto">${params.texto || ""}</div>
+      </div>
+    </div>
+    <div class="resultado-legenda">${params.legenda || ""}</div>
+  `;
+  if (params.alerta) {
+    html += `<div class="resultado-alerta">${params.alerta}</div>`;
+  }
+  if (params.ok) {
+    html += `<div class="resultado-ok">${params.ok}</div>`;
+  }
+  document.getElementById('resultado-enfermagem').innerHTML = html;
+
+  const svgElement = document.querySelector('#resultado-enfermagem .resultado-circulo-container svg');
+  if (svgElement) {
+    let percent = 1;
+    const circles = svgElement.querySelectorAll('circle');
+    for (let c of circles) {
+      const color = c.getAttribute('stroke');
+      if (
+        color === "#2db46a" ||
+        color === "#2FB1AB" ||
+        color === "#2fb1aaa2" ||
+        color === "#2FB1AB33"
+      ) {
+        const dasharray = parseFloat(c.getAttribute('stroke-dasharray'));
+        const dashoffset = parseFloat(c.getAttribute('stroke-dashoffset'));
+        percent = 1 - dashoffset / dasharray;
+      }
+    }
+    animarDoughnut(svgElement, percent, 900);
+  }
+}
 
 // =======================
 // EVENTOS (sem alteração)
