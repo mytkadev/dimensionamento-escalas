@@ -305,3 +305,60 @@ p {
   align-items: center;
   justify-content: center;
 }
+
+.select-container_enf {
+  width:100%;
+  display: flex;
+  gap:16px
+}
+.select-container_enfprof, .select-container_enfsetor{
+  width:50%
+}
+
+.all-container_legislacao {
+  padding:8px 24px;
+}
+
+ul.referencias {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+  width:100%;
+  background: #f6fbfb;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px #0001;
+  border: 1px solid #d2e5e8;
+}
+
+ul.referencias li {
+  padding: 18px 22px;
+  border-bottom: 1px solid #e3ecee;
+  font-size: 1.07em;
+  transition: background 0.2s;
+    padding: 0; /* Remova padding do li, vai pro a */
+}
+
+ul.referencias li:last-child {
+  border-bottom: none;
+}
+
+ul.referencias li:hover {
+  background: #e5f2f3;
+}
+
+ul.referencias a {
+  display: block;
+  padding: 18px 22px;
+  color: #00717f;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.18s, background 0.2s;
+  border-bottom: 1px solid #e3ecee;
+  word-break: break-word;
+  border-radius: 12px;
+}
+
+ul.referencias a:hover {
+  color: #11484a;
+  text-decoration: underline;
+}
