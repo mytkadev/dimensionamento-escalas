@@ -75,11 +75,96 @@
         </div>
         <!-- Conteúdo da aba Enfermagem -->
         <div id="abaConteudoEnfermagem" class="all-container" style="display:none;">
-        <!-- Futuro conteúdo da aba Enfermagem -->
+          <div class="select-container" id="container-enf">
+  <div class="select-container_enf">
+    <div class="select-container_enfsetor">
+      <label for="enf-setor">Setor:</label>
+      <select id="enf-setor">
+        <option value="UTI">UTI</option>
+      </select>
+    </div>
+    <div class="select-container_enfprof">
+      <label for="enf-profissional">Profissional:</label>
+      <select id="enf-profissional">
+        <option value="">Selecione</option>
+        <option value="enfermeiro">Enfermeiro</option>
+        <option value="tecnico">Técnico de Enfermagem</option>
+      </select>
+    </div>
+  </div>
+  <div class="select-container_second">
+    <div class="leitos">
+      <label for="enf-leitos">Quantidade de leitos:</label>
+      <input type="number" id="enf-leitos" min="1" placeholder="0">
+    </div>
+    <div>
+      <label for="enf-atuais">Funcionários atualmente no setor:</label>
+      <div class="qtt-inputs">
+        <div>
+          <p style="margin-top:4px; font-size:0.8em;">Parceiros:</p>
+          <input type="number" id="enf-atuais-parceiro" min="0" placeholder="0">
+        </div>
+        <div>
+          <p style="margin-top:4px; font-size:0.8em;">Servidores:</p>
+          <input type="number" id="enf-atuais-servidor" min="0" placeholder="0">
+        </div>
+      </div>
+    </div>
+  </div>
+  <button onclick="calcularEnfermagem()">Calcular</button>
+</div>
+<div class="resultado" id="resultado-enfermagem"></div>
         </div>
         <!-- Conteúdo da aba Legislação -->
-        <div id="abaConteudoLegislacao" class="all-container" style="display:none;">
-        <!-- Futuro conteúdo da aba Legislação -->
+        <div id="abaConteudoLegislacao" class="all-container_legislacao" style="display:none;">
+<ul class="referencias">
+  <li>
+    <a href="chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.saude.df.gov.br/documents/37101/0/Manual_de_Parametros_Minimos_da_Forca_de_Trabalho_2025__3_edicao.pdf/5b0e93fb-7699-257c-a65a-ee6048ff4451?t=1739551649385" target="_blank">
+      Manual de Parâmetros para Dimensionamento de Força de Trabalho SES/DF 2015
+    </a>
+  </li>
+  <li>
+    <a href="https://www.legisweb.com.br/legislacao/?id=343179" target="_blank">
+      Resolução COFEN Nº 543/2017 - Dimensionamento de pessoal de enfermagem
+    </a>
+  </li>
+  <li>
+    <a href="https://bvsms.saude.gov.br/bvs/saudelegis/anvisa/2010/res0007_24_02_2010.html" target="_blank">
+      Resolução RDC nº 7, de 24 de fevereiro de 2010 - ANVISA (Requisitos mínimos para UTI)
+    </a>
+  </li>
+  <li>
+    <a href="https://www.crn3.org.br/arquivos/portariacrn-3-n343-2018pdf.pdf" target="_blank">
+      Portaria CRN-3 nº 340/2018 (Nutrição)
+    </a>
+  </li>
+  <li>
+    <a href="https://www.sbrafh.org.br/site/public/docs/padroes.pdf" target="_blank">
+      SBRAFH - Padrões Mínimos para Farmácia Hospitalar 2017
+    </a>
+  </li>
+  <li>
+    <a href="https://www.crp09.org.br/portal/images/noticias/2019/NOTATECNICACRP09N032019_PARAMETROSDEASSISTENCIAPSICOLOGICANASAUDE.pdf" target="_blank">
+      Nota Técnica CRP-09 nº 003/2019 (Psicologia)
+    </a>
+  </li>
+  <li>
+    <a href="https://www.legisweb.com.br/legislacao/?id=275977" target="_blank">
+      Resolução COFFITO nº 444, de 26 de abril de 2014 (Fisioterapia)
+    </a>
+  </li>
+  <li>
+    <a href="https://www.legisweb.com.br/legislacao/?id=243890" target="_blank">
+      Resolução COFFITO nº 418, junho/2012 (Terapia Ocupacional)
+    </a>
+  </li>
+  <li>
+    <a href="https://www.legisweb.com.br/legislacao/?id=362818" target="_blank">
+      Resolução CFFa nº 488 de 18 de fevereiro/2016 (Fonoaudiologia)
+    </a>
+  </li>
+</ul>
+
         </div>
         
     </div>
