@@ -656,8 +656,8 @@ function calcularEnfermagem() {
     necessario = Math.ceil(leitos / 8);
     legenda = `<span>Regra:</span> 1 enfermeiro para cada 8 leitos <br><b>Fonte:</b> RDC 7/2010`;
   } else if (prof === "tecnico") {
-    necessario = Math.ceil(leitos / 2);
-    legenda = `<span>Regra:</span> 1 técnico para cada 2 leitos <br><b>Fonte:</b> RDC 7/2010`;
+    necessario = Math.ceil((leitos / 2)+1);
+    legenda = `<span>Regra:</span> (1 técnico para cada 2 leitos) + 1 <br><b>Fonte:</b> RDC 7/2010`;
   }
 
   // Não informou funcionários atuais
